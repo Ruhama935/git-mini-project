@@ -12,7 +12,7 @@ function Posts() {
         try {
             const res = await axios.get('http://localhost:5000/api/posts')
             if (res.status === 200)
-                setPosts(res.data.sort((a, b) => a._id - b._id))
+                setPosts(res.data.sort((a, b) => a._id - b._id) || []) 
         }
         catch (e) { console.log(e); }
     }
@@ -23,9 +23,9 @@ function Posts() {
     return (
         <>
             <CreatePost setPosts={setPosts}/>
-            {
+            {posts.length === 0 ? <h1 style={{textAlign:"center"}}>No posts found</h1> :
                 posts.map((post) => (
-                    <PostContext.Provider value={{ post, setPosts }}>
+                    <PostContext.Provider key={post.id} value={{ post, setPosts }}>
                         <Post />
                     </PostContext.Provider>
                 ))}

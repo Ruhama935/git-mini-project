@@ -40,24 +40,28 @@ function Post() {
                 gap: 2,
             }}>
             <Card
-                size="lg" variant="outlined"
+                size="lg"
+                variant="solid"
+                color="neutral"
+                invertedColors
                 sx={{
-                    margin: "2% 10% 2% 10%"
+                    bgcolor: 'neutral.900',
+                    margin: "2% 15% 2% 15%"
                 }}>
-                <Typography level="h2" sx={{color: "#fc45a6b0"}}>{post.title}</Typography>
+                <Typography level="h2" sx={{ color: "#fc45a6b0" }}>{post.title}</Typography>
                 {post.body.trim().length > 50 ? <><ListItemButton onClick={handleClick}>
                     <ListItemIcon>
                         <InboxIcon />
                     </ListItemIcon>
                     <ListItemText primary="Show the body of the post" />
                     {open ? <ExpandLess /> : <ExpandMore />}
-                    </ListItemButton>
+                </ListItemButton>
                     {open ? <><Divider inset="none" />
-                        <p>{post.body}</p></>:
+                        <p>{post.body}</p></> :
                         <></>}
-                    </>
-                     : <><Divider inset="none" />
-                    <p>{post.body}</p></>}
+                </>
+                    : <><Divider inset="none" />
+                        <p style={{ color: "white" }}>{post.body}</p></>}
                 <Divider inset="none" />
                 <CardActions>
                     <DeletePost />

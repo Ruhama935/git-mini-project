@@ -1,0 +1,10 @@
+.w-9rem-toggle-true {
+    background-color: #fc45a6b0; /* צבע ירוק */
+    color: black; /* טקסט לבן */
+}
+
+.toggle-false {
+    background-color: black; /* צבע אדום */
+    color: #fc45a6b0; /* טקסט לבן */
+    border: 2px solid #fc45a6b0; /* גבול סולידי */
+}

@@ -23,7 +23,7 @@ function Homepage() {
             >
                 <BottomNavigationAction component={Link} to="users" label="Users" icon={<PersonIcon />} />
                 <BottomNavigationAction component={Link} to="posts" label="Posts" icon={<StickyNote2OutlinedIcon />} />
-                <BottomNavigationAction component={Link} to="todos" label="Todos" icon={<PlaylistAddCheckOutlinedIcon />} />
+                <BottomNavigationAction component={Link} to="tasks" label="Tasks" icon={<PlaylistAddCheckOutlinedIcon />} />
             </BottomNavigation>
         </Box>
     );

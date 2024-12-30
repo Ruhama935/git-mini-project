@@ -27,7 +27,8 @@ function CreateUser(prop) {
                 variant="outlined"
                 color="neutral"
                 startDecorator={<Add />}
-                style={{margin: "6%  0% 0% 10%"}}
+                sx={{ borderColor: 'black' }}
+                style={{margin: "6%  0% 0% 15%"}}
                 onClick={() => setOpen(true)}
             >
                 New user

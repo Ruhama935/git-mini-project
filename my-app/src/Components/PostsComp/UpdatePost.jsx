@@ -24,7 +24,7 @@ function UpdatePost() {
                 variant="outlined"
                 color="neutral"
                 onClick={() => setOpen(true)}>
-                <i className="pi pi-file-edit" style={{ fontSize: '1rem', color: 'red' }}></i>
+                <i className="pi pi-file-edit" style={{ fontSize: '1rem', color: '#fc45a6b0' }}></i>
             </Button>
             <Modal open={open} onClose={() => setOpen(false)}>
                 <ModalDialog>

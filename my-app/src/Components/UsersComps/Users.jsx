@@ -12,7 +12,7 @@ function Users() {
         try {
             const res = await axios.get('http://localhost:5000/api/users')
             if (res.status === 200) {
-                setUsers(res.data.sort((a, b) => a._id - b._id))
+                setUsers(res.data.sort((a, b) => a._id - b._id) || [])
             }
         }
         catch (e) {
@@ -27,7 +27,8 @@ function Users() {
     return (
         <>
             <CreateUser setUsers={setUsers}/>
-            {users.map((user) => (
+            {users.length === 0 ? <h1 style={{ textAlign: "center"}}>No users found</h1> :
+            users.map((user) => (
                 <UserContext.Provider value={{ user, setUsers }}>
                     <User/> 
                 </UserContext.Provider>

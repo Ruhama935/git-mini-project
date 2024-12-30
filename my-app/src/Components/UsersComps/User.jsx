@@ -38,7 +38,7 @@ function User() {
                     invertedColors
                     sx={{
                         bgcolor: 'neutral.900',
-                        margin: "2% 10% 2% 10%"
+                        margin: "2% 15% 2% 15%"
                     }}
                 >
                     <i className="pi pi-user" style={{ fontSize: '2rem', color: '#fc45a6b0' }}>

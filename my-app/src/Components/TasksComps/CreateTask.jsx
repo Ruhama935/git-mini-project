@@ -1,51 +1,55 @@
-import { Input, FormControl, FormLabel, Modal, ModalDialog, DialogTitle, Stack, Button, DialogContent } from '@mui/joy';
-import React, { useState, useContext } from 'react';
+import {Input,FormControl,FormLabel,Modal,ModalDialog,DialogTitle,Stack,Button,DialogContent} from '@mui/joy';
+import  {useState,useContext} from 'react';
 import axios from 'axios';
-import TodoContext from './TodoContext';
+import TaskContext from './TaskContext';
 import Add from '@mui/icons-material/Add';
+import React, { useRef } from 'react';
 
-function UpdateTodo() {
-    const { todo, setTodos } = useContext(TodoContext)
+
+function CreateTask(prop) {
+    const { setTasks} = prop
     const [open, setOpen] = useState(false);
 
-    const handleChange = async (e) => {
-        const formData = { _id: `${todo._id}` };
+    const handleChange = async(e)=>{
+        debugger
+        e.preventDefault(); // למנוע את פעולת ברירת המחדל
+        const formData = {};
         const formElements = e.target.elements;
         formData['title'] = formElements[0].value
         formData['tags'] = formElements[1].value.split(',') || []
-        debugger
-        const res = await axios.put('http://localhost:5000/api/todos', formData)
-        if (res.status === 200)
-            console.log("success")
-        setTodos(res.data);
+            
+        setTasks((await axios.post('http://localhost:5000/api/tasks',formData)).data);
+        
     }
     return (
         <>
             <Button
                 variant="outlined"
                 color="neutral"
+                startDecorator={<Add />}
+                sx={{ borderColor: 'black' }}
+                style={{margin: "6%  0% 0% 15%"}}
                 onClick={() => setOpen(true)}
             >
-                <i className="pi pi-pencil" style={{ fontSize: '1rem', color: 'red' }}></i>
+                New task
             </Button>
             <Modal open={open} onClose={() => setOpen(false)}>
                 <ModalDialog>
-                    <DialogTitle>Update the todo</DialogTitle>
+                    <DialogTitle>Create new task</DialogTitle>
                     <form
-                        onSubmit={(e) => {
-                            // debugger
+                        onSubmit={(e)=>{
                             handleChange(e)
                             setOpen(false);
                         }}
                     >
                         <Stack spacing={2}>
                             <FormControl>
-                                <FormLabel>title</FormLabel>
-                                <Input title="title" required defaultValue={todo.title} />
+                                <FormLabel>title </FormLabel>
+                                <Input name="title" required />
                             </FormControl>
                             <FormControl>
                                 <FormLabel>tags (separate with ',')</FormLabel>
-                                <Input name="tags" defaultValue={todo.tags} />
+                                <Input name="tags"/>
                             </FormControl>
                             <Button type="submit">Submit</Button>
                         </Stack>
@@ -56,4 +60,4 @@ function UpdateTodo() {
     )
 }
 
-export default UpdateTodo;
+export default CreateTask;

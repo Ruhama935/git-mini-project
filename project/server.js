@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(cors(corsOptions))
 app.use("/api/users", require("./routes/user"))
 app.use("/api/posts", require("./routes/post"))
-app.use("/api/todos", require("./routes/todo"))
+app.use("/api/tasks", require("./routes/task"))
 
 
 
